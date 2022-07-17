@@ -20,6 +20,8 @@ void autotrim_pre_write_handler(yed_event *event) {
     yed_line  *line;
     int        row, cursor_col;
 
+    if (event->buffer->flags & BUFF_RD_ONLY) { return; }
+
     f = NULL;
 
     if (ys->active_frame && ys->active_frame->buffer == event->buffer) {
